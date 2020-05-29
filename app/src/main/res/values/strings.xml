@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KotlinGezegenKilo</string>
+    <string name="app_baslık">Gezenlerde Kaç Kilosun</string>
+    <string name="kg_giris_hint">Dünyadaki kilon nedir?</string>
+</resources>
