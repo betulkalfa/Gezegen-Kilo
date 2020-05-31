@@ -7,18 +7,51 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/txtSonuc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="monospace"
+        android:text="Sonuc"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edKilo" />
+
+    <CheckBox
+        android:id="@+id/chVenus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
+        android:text="Venüs"
+        app:layout_constraintEnd_toStartOf="@+id/chJupiter"
+        app:layout_constraintStart_toEndOf="@+id/chMasr"
+        app:layout_constraintTop_toBottomOf="@+id/tvBaslik" />
+
+    <TextView
         android:id="@+id/tvBaslik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:fontFamily="monospace"
         android:text="@string/app_baslık"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,39 +61,44 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/kg_giris_hint"
+        android:inputType="textPersonName"
+        android:textColor="#F48FB1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvBaslik"
-        android:textColor="#F48FB1"/>
+        app:layout_constraintTop_toBottomOf="@+id/chVenus" />
 
-    <Button
-        android:id="@+id/btnKg"
+    <CheckBox
+        android:id="@+id/chMasr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Hesapla"
-        android:textSize="18dp"
-        android:background="#F48FB1"
-        android:textColor="#fff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edKilo" />
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
+        android:text="Mars"
+        app:layout_constraintBottom_toTopOf="@+id/edKilo"
+        app:layout_constraintEnd_toStartOf="@+id/chVenus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBaslik" />
 
-    <TextView
-        android:id="@+id/txtSonuc"
+    <CheckBox
+        android:id="@+id/chJupiter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sonuc"
-        android:textSize="30dp"
-        android:fontFamily="monospace"
-        android:textStyle="bold"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:text="Jüpiter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnKg" />
+        app:layout_constraintStart_toEndOf="@+id/chVenus"
+        app:layout_constraintTop_toBottomOf="@+id/tvBaslik" />
 </androidx.constraintlayout.widget.ConstraintLayout>

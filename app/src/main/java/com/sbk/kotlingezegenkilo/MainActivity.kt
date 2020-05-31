@@ -2,22 +2,30 @@ package com.sbk.kotlingezegenkilo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
+import android.view.View
+import android.widget.CheckBox
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , View.OnClickListener{
 
     val kilo_to_pound =2.2045
     val Mars = 0.38
     val pound_to_kilo = 0.4536
+    val Jupiiter =2.34
+    val Venus = 0.91
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var kullanicikg = edKilo.text
+        chVenus.setOnClickListener(this)
+        chMasr.setOnClickListener(this)
+        chJupiter.setOnClickListener(this)
 
-       btnKg.setOnClickListener {
+
+      /* btnKg.setOnClickListener {
           var kullaniciAgirlikPound = kiloToPound(kullanicikg.toString().toDouble())
 
           var marstaAgirlikPound=kullaniciAgirlikPound*Mars
@@ -27,7 +35,7 @@ class MainActivity : AppCompatActivity() {
            txtSonuc.text=marstaAgirlikKio.formatla(4)
 
 
-           }
+           }*/
 
     }
 
@@ -41,4 +49,51 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun Double.formatla(kacRakam:Int)=java.lang.String.format("%.${kacRakam}f",this)
+
+
+    override fun onClick(v: View?) {
+        v as CheckBox
+        var isChecked : Boolean =v.isChecked
+
+        if(!TextUtils.isEmpty(edKilo.text.toString())){
+
+            var kullaniciKilo=edKilo.text.toString().toDouble()
+            var kullaniciPound=kiloToPound(kullaniciKilo)
+
+            when(v.id){
+
+                R.id.chMasr -> if(isChecked){
+                    chJupiter.isChecked=false
+                    chVenus.isChecked=false
+                    hesaplaAgirlikPound(kullaniciPound,v)
+                }
+                R.id.chJupiter -> if(isChecked){
+                    chMasr.isChecked=false
+                    chVenus.isChecked=false
+                    hesaplaAgirlikPound(kullaniciPound,v)
+                }
+                R.id.chVenus -> if(isChecked){
+                    chMasr.isChecked=false
+                    chJupiter.isChecked=false
+                    hesaplaAgirlikPound(kullaniciPound,v)
+                }
+            }
+
+        }
+
+
+    }
+    fun hesaplaAgirlikPound(pound: Double,checkBox: CheckBox){
+        var sonuc : Double =0.0
+        when(checkBox.id){
+            R.id.chMasr->sonuc=pound*Mars
+            R.id.chJupiter->sonuc=pound*Jupiiter
+            R.id.chVenus->sonuc=pound*Venus
+            else -> sonuc=0.0
+        }
+
+        var sonucToKilo=poundToKilo(sonuc)
+        txtSonuc.text=sonucToKilo.formatla(3)
+    }
+
 }
