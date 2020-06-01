@@ -2,10 +2,12 @@ package com.sbk.kotlingezegenkilo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.CheckBox
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() , View.OnClickListener{
@@ -19,6 +21,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Glide.with(this).load(R.drawable.gezegen).into(imageView) // resim yükleme
+
+        txtSonuc.text=savedInstanceState?.getString("sonuc")//ekran döndüğünde text değerinin korunmasını sağlar
 
         chVenus.setOnClickListener(this)
         chMasr.setOnClickListener(this)
@@ -42,6 +48,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
     fun kiloToPound(kilo: Double): Double{
 
         return kilo*kilo_to_pound
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("sonuc",txtSonuc.text.toString())
+
+//ekran döndüğünde text değerinin korunmasını sağlar
     }
 
     fun poundToKilo(pound : Double):Double{
